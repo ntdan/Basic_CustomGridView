@@ -50,6 +50,7 @@ public class ToyAdapter extends BaseAdapter{
             convertView = ((Activity)context).getLayoutInflater().inflate(R.layout.toy_cell, parent, false);
             cell.hinh = (ImageView) convertView.findViewById(R.id.imageView);
             cell.ten = (TextView)convertView.findViewById(R.id.textView);
+            cell.vitri = (TextView) convertView.findViewById(R.id.tvPosition);
 
             convertView.setTag(cell);
         }else
@@ -59,6 +60,7 @@ public class ToyAdapter extends BaseAdapter{
 
         cell.ten.setText(toys.get(position).getTen());
         cell.hinh.setImageResource(toys.get(position).getHinh());
+        cell.vitri.setText(position + "");
 
         cell.hinh.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +69,14 @@ public class ToyAdapter extends BaseAdapter{
             }
         });
 
+        // cho phep su dung su kien lonk click tren item
+        convertView.setLongClickable(true);
+
         return convertView;
     }
 
     class Cell{
         ImageView hinh;
-        TextView ten;
+        TextView ten, vitri;
     }
 }
